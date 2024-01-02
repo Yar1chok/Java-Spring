@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+    <link href="../static/css/style.css" type="text/css" rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<h2>User Profile</h2>
+
+<table style="width: 60%">
+    <tr>
+        <td>Login</td>
+        <td><span th:text="${user.getUsername()}"></span></td>
+    </tr>
+    <tr>
+        <td>Password encoded</td>
+        <td><span th:text="${user.getPassword()}"></span></td>
+    </tr>
+    <tr>
+        <td>Roles</td>
+        <td>
+            <span th:each="role, iterStat : ${user.getRoles()}" th:text="${role.getName()}">
+                <span th:if="${not #strings.endsWith(role.getName(), ', ')}" th:unless="${iterStat.last}">, </span>
+            </span>
+        </td>
+    </tr>
+</table>
+
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Exit from account"/>
+</form>
+<a href="/" style="font-size: smaller">Return to menu</a>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<div th:fragment="table">
+    <h2>Watch List</h2>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Brand</th>
+            <th>Type of Watch</th>
+            <th>Price</th>
+            <th>Warranty Period</th>
+            <th>Weight</th>
+        </tr>
+        <th:block th:each="watch : ${watchList}">
+            <tr>
+                <td th:text="${watch.id}"></td>
+                <td th:text="${watch.brand}"></td>
+                <td th:text="${watch.typeWatch}"></td>
+                <td th:text="${watch.price}"></td>
+                <td th:text="${watch.warrantyPeriod}"></td>
+                <td th:text="${watch.weight}"></td>
+            </tr>
+        </th:block>
+    </table>
+</div>

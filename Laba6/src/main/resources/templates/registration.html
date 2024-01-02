@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration page</title>
+    <link href="../static/css/style.css" type="text/css" rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<h2>Registration</h2>
+
+<!--<th:block th:insert="~{blocks/errorBlock :: error}"></th:block>-->
+<form th:action="@{/user/registration}" method="post" th:object="${user}">
+    <table>
+        <tr>
+            <td>Login:</td>
+            <td><input type="text" id="login" name="login"
+                       required minlength="4" maxlength="25"/></td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type="password" id="password"
+                       name="password" required minlength="4"
+                       maxlength="25"/></td>
+        </tr>
+        <tr>
+            <td colspan="2" class="text-center">
+                <br>
+                <button type="submit" class="btn btn-primary">Sign up</button>
+            </td>
+        </tr>
+    </table>
+</form>
+
+<footer>
+    <a href="/user/login" style="font-size: smaller">Log in if you have an account</a>
+</footer>
+</body>
+</html>

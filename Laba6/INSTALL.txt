@@ -1,0 +1,43 @@
+Чтобы развернуть у себя базу данных, вам необходимо установить PostgerSQL на свое устройство, после чего запустить ее.
+Создайте новую базу данных, войдя в консоль psql под своими данными и выполните следующие команды:
+CREATE DATABASE postgres;
+CREATE USER postgres WITH PASSWORD 'postgres';
+\quit;
+
+Затем подключиться к базе данных с помощью команд:
+psql -d postgres -U postgres
+И вставить следующий текст:
+CREATE TABLE watch (
+    id SERIAL PRIMARY KEY,
+    brand VARCHAR(255) NOT NULL,
+    type_watch VARCHAR(255) NOT NULL,
+    price numeric(8, 2) NOT NULL,
+    warranty_period int NOT NULL,
+    weight numeric(8, 2) NOT NULL
+);
+
+CREATE TABLE users (
+ 	id_user SERIAL PRIMARY KEY,
+	login VARCHAR(25) NOT NULL UNIQUE,
+	password VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE roles (
+	id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL
+);
+INSERT INTO roles(name) VALUES ('ROLE_USER'), ('ROLE_ADMIN');
+
+CREATE TABLE users_roles (
+            user_id int NOT NULL,
+            role_id int NOT NULL,
+            CONSTRAINT user_fk FOREIGN KEY (user_id) REFERENCES users (id_user),
+            CONSTRAINT role_fk FOREIGN KEY (role_id) REFERENCES roles (id),
+            PRIMARY KEY (user_id, role_id)
+);
+
+Таблица будут созданы. Теперь вы можете запустить файл Laba6.jar и подключиться к базе данных.
+Для компиляции и запуска проекта нужно ввести в терминале, находясь в корневой папке:
+mvn clean package
+java -jar target/Laba6-1.0-SNAPSHOT.jar
+Открыть в бразуере localhost:8081

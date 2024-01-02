@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login page</title>
+    <link href="../static/css/style.css" type="text/css" rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<h2>Sign in</h2>
+
+<p th:if="${param.error}" style="color: red;">Invalid username or password</p>
+<p th:if="${param.logout}" style="color: green;">You have successfully logged out of your account</p>
+<form th:action="@{/user/login}" method="post" th:object="${user}">
+    <table>
+        <tr>
+            <td>Login:</td>
+            <td><input type="text" id="login" name="login"
+                       required minlength="4" maxlength="25"/></td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type="password" id="password"
+                       name="password" required minlength="4"
+                       maxlength="25"/></td>
+        </tr>
+        <tr>
+            <td colspan="2" class="text-center">
+                <br>
+                <button type="submit">Log in</button>
+            </td>
+        </tr>
+    </table>
+</form>
+<footer>
+    <a href="/user/registration" style="font-size: smaller">Register if you don't have an account</a>
+</footer>
+</body>
+</html>
