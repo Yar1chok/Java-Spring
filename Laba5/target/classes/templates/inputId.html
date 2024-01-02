@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Watch - Select</title>
+</head>
+<body>
+<div th:if="${errorMessage}" style="color: red;">
+    <p th:text="${errorMessage}"></p>
+</div>
+
+<div th:switch="${!watchList.isEmpty()}">
+    <div th:case="${true}">
+        <h2>Select-Id</h2>
+        <form th:action="@{|/${func[0]}|}" method="post">
+            <label for="inputId">ID записи для <label th:text="${func[1]}"></label>:</label>
+            <input type="text" id="inputId" name="inputId" required maxlength="9"/>
+            <button type="submit">Ввести</button>
+        </form>
+        <th:block th:insert="~{blocks/tableBlock :: table}"></th:block>
+    </div>
+    <div th:case="${false}">
+        <h2>There are no records</h2>
+    </div>
+</div>
+<footer th:fragment="footer">
+    <a href="/" style="font-size: smaller">Go back to the main page</a>
+</footer>
+</body>
+</html>

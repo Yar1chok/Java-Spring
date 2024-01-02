@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Watch</title>
+</head>
+<body>
+<h2>Add Watch</h2>
+
+<!-- Display error message if there is any -->
+<div th:if="${errorMessage}" style="color: red;">
+    <p th:text="${errorMessage}"></p>
+</div>
+
+<!-- Display success message if there is any -->
+<div th:if="${message}" style="color: green;">
+    <p th:text="${message}"></p>
+</div>
+
+<!-- Watch Form -->
+<form th:action="@{add}" method="post" th:object="${watch}">
+    <label for="brand">Brand:</label>
+    <input type="text" id="brand" name="brand" maxlength="255" th:field="*{brand}" required>
+
+    <label for="typeWatch">Type of Watch:</label>
+    <input type="text" id="typeWatch" name="typeWatch" th:field="*{typeWatch}" required>
+
+    <label for="price">Price:</label>
+    <input type="text" id="price" name="price" th:field="*{price}" required>
+
+    <label for="warrantyPeriod">Warranty Period:</label>
+    <input type="text" id="warrantyPeriod" name="warrantyPeriod" th:field="*{warrantyPeriod}" required>
+
+    <label for="weight">Weight:</label>
+    <input type="text" id="weight" name="weight" th:field="*{weight}" required>
+
+    <button type="submit">Add Watch</button>
+</form>
+<footer th:fragment="footer">
+    <a href="/" style="font-size: smaller">Go back to the main page</a>
+</footer>
+</body>
+</html>

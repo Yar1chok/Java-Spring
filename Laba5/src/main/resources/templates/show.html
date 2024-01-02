@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watch List</title>
+</head>
+<body>
+<div th:switch="${!watchList.isEmpty()}">
+    <div th:case="${true}">
+        <th:block th:insert="~{blocks/tableBlock :: table}"></th:block>
+    </div>
+    <div th:case="${false}">
+        <h2>There are no records</h2>
+    </div>
+</div>
+<footer th:fragment="footer">
+    <a href="/" style="font-size: smaller">Go back to the main page</a>
+</footer>
+</body>
+</html>
