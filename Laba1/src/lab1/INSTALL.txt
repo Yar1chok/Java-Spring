@@ -1,0 +1,9 @@
+## Практическая работа №1. Java Core, наследование.
+
+Выполнил Смолянинов Ярослав, группа КИ21-16/1Б
+Вариант 23
+
+Для компиляции программы необходимо сначала перейти в папку, где находится папка lab1. Затем выполнить следующие команды:
+
+javac lab1/Clothes.java lab1/Hats.java lab1/MenuOptions.java lab1/Overcoat.java lab1/Shoes.java lab1/Main.java
+java ./lab1/Main.java
