@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Watch</title>
+</head>
+<body>
+<h2>Edit Watch</h2>
+
+<!-- Display error message if there is any -->
+<div th:if="${errorMessage}" style="color: red;">
+    <p th:text="${errorMessage}"></p>
+</div>
+
+<form th:action="@{/edit}" method="post" th:object="${watch}">
+    <input type="hidden" th:field="*{id}"/>
+
+    <label for="brand">Brand:</label>
+    <input type="text" id="brand" name="brand" th:field="*{brand}" required/>
+
+    <label for="typeWatch">Type of Watch:</label>
+    <input type="text" id="typeWatch" name="typeWatch" th:field="*{typeWatch}" required/>
+
+    <label for="price">Price:</label>
+    <input type="number" id="price" name="price" th:field="*{price}" min="0" required/>
+
+    <label for="warrantyPeriod">Warranty Period:</label>
+    <input type="number" id="warrantyPeriod" name="warrantyPeriod" th:field="*{warrantyPeriod}" min="1" required/>
+
+    <label for="weight">Weight:</label>
+    <input type="number" id="weight" name="weight" th:field="*{weight}" min="0" required/>
+    <button type="submit">Save Changes</button>
+</form>
+
+<footer th:fragment="footer">
+    <a href="/" style="font-size: smaller">Back to the main page</a>
+</footer>
+</body>
+</html>
