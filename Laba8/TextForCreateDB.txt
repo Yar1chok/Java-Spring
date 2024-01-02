@@ -1,0 +1,9 @@
+CREATE TABLE watch (
+    id SERIAL PRIMARY KEY,
+    brand VARCHAR(255) NOT NULL,
+    type_watch VARCHAR(255) NOT NULL,
+    price numeric(8, 2) NOT NULL,
+    warranty_period int NOT NULL,
+    weight numeric(8, 2) NOT NULL,
+    purchased BOOLEAN NOT NULL DEFAULT false
+);

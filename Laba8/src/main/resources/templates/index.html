@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Menu Application</title>
+  <link href="../static/css/style.css" type="text/css" rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<h1>Main page in application 'Watch'</h1>
+<ul>
+  <li><a th:href="@{/add}">Add watch in database.</a></li>
+  <li><a th:href="@{/show}">Show added watches in database.</a></li>
+  <li><a th:href="@{inputId}">Edit record in database.</a></li>
+  <li><a th:href="@{inputFind}">Find record by id</a></li>
+  <li><a th:href="@{delete}">Delete record in database.</a></li>
+  <li><a th:href="@{search}">Search record in database.</a></li>
+</ul>
+</body>
+</html>
