@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath:config.properties"/>
+    <bean id="goalkeeper" class="rkis2.Goalkeeper">
+        <property name="goalsConceded" value="${goalkeeper.goalsConceded}"/>
+    </bean>
+
+    <bean id="fielder" class="rkis2.Fielder">
+        <property name="name" value="${fielder.name}"/>
+    </bean>
+
+    <bean id="footballTeam" class="rkis2.FootballTeam">
+        <constructor-arg name="nameTeam" value="Spartak"/>
+        <constructor-arg name="countPeopleInTeam" value="12"/>
+        <constructor-arg ref="goalkeeper"/>
+        <constructor-arg ref="fielder"/>
+    </bean>
+</beans>
